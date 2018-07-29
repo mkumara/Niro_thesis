@@ -52,26 +52,3 @@ processAllDistricts <- function()
    write.table(c(cor1[1], cor2[1], cor3[1]), paste('cor_',f,""));
   }
 }
-
-
-
-getLevelsAll <- function()
-{
-  normalized_files = list.files('.', pattern = '^norm');
-  
-  for (f in normalized_files)
-  {
-    data = read.csv(f, header = FALSE);
-    
-    hpts <- chull(data[,1:2]);
-    
-    data_r = data[-(hpts),];
-    r_hpts <- chull(data_r[,1:2]);
-    
-    data_r2 = data_r[-(r_hpts),];
-    
-    
-    write.table(data_r, paste('level1\level1',f,"_"));
-    write.table(data_r2, paste('level2\level2',f,"_"));
-  }
-}

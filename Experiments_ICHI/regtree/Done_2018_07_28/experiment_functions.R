@@ -54,8 +54,7 @@ processAllDistricts <- function()
 }
 
 
-
-getLevelsAll <- function()
+getLevels<- function()
 {
   normalized_files = list.files('.', pattern = '^norm');
   
@@ -71,7 +70,8 @@ getLevelsAll <- function()
     data_r2 = data_r[-(r_hpts),];
     
     
-    write.table(data_r, paste('level1\level1',f,"_"));
-    write.table(data_r2, paste('level2\level2',f,"_"));
+    write.table(data, paste('level0/level0_',f,""), col.names = FALSE, row.names = FALSE, sep = ",");
+    write.table(data_r, paste('level1/level1_',f,""), col.names = FALSE, row.names = FALSE, sep = ",");
+    write.table(data_r2, paste('level2/level2_',f,""), col.names = FALSE, row.names = FALSE, sep = ",");
   }
 }
