@@ -272,10 +272,10 @@ function getAccuracyEnsemble($model1, $model2, $model3, $partitioned_data, $alph
             $train = array_merge($train, $partitioned_data[$j]);
         }
 
-        $transformed_train = transform($train, $full = true);
+        $transformed_train = transform($train, $full = false);
 
 //var_dump( $transformed_train);
-        $transformed_test = transform($test, $full = true);
+        $transformed_test = transform($test, $full = false);
 //var_dump( $transformed_test);
         $model1->train($transformed_train[0], $transformed_train[1]);
         $model2->train($transformed_train[0], $transformed_train[1]);
