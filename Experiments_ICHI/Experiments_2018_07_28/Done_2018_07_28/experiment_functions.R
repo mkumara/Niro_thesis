@@ -75,3 +75,25 @@ getLevels<- function()
     write.table(data_r2, paste('level2/level2_',f,""), col.names = FALSE, row.names = FALSE, sep = ",");
   }
 }
+
+
+consolidateCor <- function()
+{
+  cor_files = list.files('.', pattern = '^cor');
+  final_cor = matrix(0,0,3);
+  print(dim(final_cor));
+  
+  for (f in cor_files)
+  {
+    print(f);
+    corFile = read.table(f);
+    temp <- matrix(c(corFile[1,1], corFile[2,1], corFile[3,1]), 1, 3);
+    
+    print(dim(temp));
+    final_cor <- rbind(final_cor, temp);
+    #print(final_cor);
+    
+  
+  }
+  write.table(final_cor, 'consolidatedCor.csv', col.names = FALSE, row.names = FALSE, sep = ',');
+}
