@@ -155,3 +155,21 @@ consolidateCorRaw <- function()
   }
   write.table(final_cor, 'consolidatedCorRaw.csv', col.names = FALSE, row.names = FALSE, sep = ',');
 }
+
+getAllDistricsInOne <- function()
+{
+  files = list.files('.', pattern = '^normalized');
+  final = matrix(0,0,2);
+  
+  
+  for (f in files)
+  {
+    corFile = read.table(f);
+    size = dim(corFile);
+
+    final <- rbind(final, corFile);
+    
+    
+  }
+  write.csv(final, 'AllDistricts.csv');
+}
