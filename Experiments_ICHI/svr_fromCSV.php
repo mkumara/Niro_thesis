@@ -144,6 +144,7 @@ foreach ($file_list as $file) {
 
     $null = array_pop($data_temp);
     $null = array_pop($data_rain);
+    $null = array_pop($data_full);
 
     //if ($argv[5] == 1) {
     $pd = getDataPartitioned($data_full, $fold);
@@ -325,7 +326,9 @@ function getAccuracyPerFoldEnsemble($model1, $model2, $model3, $test, $alpha)
     $error   = 0;
 
     for ($i = 0; $i < count($test[0]); $i++) {
-        $result[] = (floatval($model1->predict($test[0][$i])) + floatval($model2->predict($test[0][$i])) + floatval($model3->predict($test[0][$i]))) / 3;
+        //$result[] = (floatval($model1->predict($test[0][$i])) + floatval($model2->predict($test[0][$i])) + floatval($model3->predict($test[0][$i]))) / 3;
+        $result[] = (floatval($model1->predict($test[0][$i])) + floatval($model3->predict($test[0][$i]))) / 2;
+
         $error += abs($result[$i] - $test[1][$i]);
 
         if (abs($result[$i] - $test[1][$i]) < $alpha) {
