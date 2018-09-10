@@ -33,7 +33,8 @@ normalizeData2 <- function(filename) {
     temp[1:12,3] = round((temp[1:12,3] - min(temp[1:12,3]))/max(temp[1:12,3]), 4);
     normalizedMatrix <- rbind(normalizedMatrix, temp);
   }
-  normalizedFilename = paste('normalized', filename, sep="_");
+  normalizedFilename = pa
+  ste('normalized', filename, sep="_");
   write.table(normalizedMatrix, normalizedFilename, row.names = FALSE, col.names = FALSE, sep = ",");
   print(filename);
   print(cor(normalizedMatrix[,1], normalizedMatrix[,2]));
